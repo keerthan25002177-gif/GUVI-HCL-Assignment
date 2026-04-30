@@ -1,0 +1,64 @@
+use todo_db
+
+db.tasks.insertOne({
+  task_id: 1,
+  title: "Complete Assignment",
+  description: "Finish MongoDB homework",
+  due_date: new Date("2026-05-01"),
+  priority: "High",
+  is_completed: false
+})
+
+db.tasks.insertMany([
+  {
+    task_id: 2,
+    title: "Buy Groceries",
+    description: "Milk, Bread, Eggs",
+    due_date: new Date("2026-04-30"),
+    priority: "Medium",
+    is_completed: false
+  },
+  {
+    task_id: 3,
+    title: "Workout",
+    description: "Morning exercise",
+    due_date: new Date("2026-04-29"),
+    priority: "Low",
+    is_completed: true
+  },
+  {
+    task_id: 4,
+    title: "Project Meeting",
+    description: "Discuss project progress",
+    due_date: new Date("2026-05-02"),
+    priority: "High",
+    is_completed: false
+  },
+  {
+    task_id: 5,
+    title: "Call Friend",
+    description: "Catch up with friend",
+    due_date: new Date("2026-04-30"),
+    priority: "Low",
+    is_completed: true
+  },
+  {
+    task_id: 6,
+    title: "Read Book",
+    description: "Read 20 pages",
+    due_date: new Date("2026-05-03"),
+    priority: "Medium",
+    is_completed: false
+  }
+])
+
+db.tasks.find({ is_completed: false })
+
+db.tasks.find(
+  {},
+  { _id: 0, title: 1, due_date: 1 }
+)
+
+db.tasks.deleteOne({ task_id: 3 })
+
+db.tasks.createIndex({ task_id: 1 }, { unique: true })
